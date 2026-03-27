@@ -1,5 +1,5 @@
-name: 'Trigger GptDriver Tests'
-description: 'Uploads mobile build and PR instructions to our platform.'
+name: 'Trigger MobileBoost Tests'
+description: 'Uploads build and PR instructions to the MobileBoost platform.'
 inputs:
   organisation-id: 
     description: 'Organisation identifier'
@@ -14,14 +14,14 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Upload to FastAPI
+    - name: Upload to MobileBoost
       shell: bash
       env:
         API_URL: 'https://api.mobileboost.io/builds'
         ORG_ID: ${{ inputs.organisation-id }}
         APP_PATH: ${{ inputs.app-path }}
         PLATFORM: ${{ inputs.platform }}
-        EVENT_PATH: ${{ github.event_path }} # Auto-injected by GitHub, contains PR metadata
+        EVENT_PATH: ${{ github.event_path }}
         REPO: ${{ github.repository }}
         COMMIT: ${{ github.event.pull_request.head.sha }}
       run: |
