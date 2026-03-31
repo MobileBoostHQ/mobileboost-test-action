@@ -29,7 +29,7 @@ runs:
         
         curl -X POST "$API_URL" \
           -F "organisation_id=$ORG_ID" \
-          -F "repo_full_name=$REPO" \
+          -F "repo_full_path=$REPO" \
           -F "commit_sha=$COMMIT" \
           -F "pr_body=$PR_BODY" \
           -F "upload_file=@$APP_PATH" \
