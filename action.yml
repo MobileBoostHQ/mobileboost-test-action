@@ -14,23 +14,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Set check in progress
-      shell: bash
-      env:
-        GH_TOKEN: ${{ github.token }}
-        REPO: ${{ github.repository }}
-        COMMIT: ${{ github.event.pull_request.head.sha }}
-      run: |
-        curl -X POST \
-          -H "Authorization: token $GH_TOKEN" \
-          -H "Accept: application/vnd.github.v3+json" \
-          "https://api.github.com/repos/$REPO/check-runs" \
-          -d '{
-            "name": "MobileBoost Test Agent",
-            "head_sha": "'"$COMMIT"'",
-            "status": "in_progress"
-          }'
-
     - name: Upload to MobileBoost
       shell: bash
       env:
@@ -49,7 +32,6 @@ runs:
           -F "organisation_id=$ORG_ID" \
           -F "repo_full_path=$REPO" \
           -F "commit_sha=$COMMIT" \
-          -F "gh_action_token=$GH_TOKEN" \
           -F "pr_body=$PR_BODY" \
           -F "upload_file=@$APP_PATH" \
           -F "platform=$PLATFORM"
