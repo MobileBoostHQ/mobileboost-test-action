@@ -9,7 +9,7 @@ inputs:
     required: true
   platform:
     description: 'App platform: either Android or iOS'
-    required: true
+    required: false
     
 runs:
   using: "composite"
