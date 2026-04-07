@@ -5,7 +5,7 @@ inputs:
     description: 'Organisation identifier'
     required: true
   app-path: 
-    description: 'Path to the .apk or .ipa'
+    description: 'Path to the build file (.apk for Android, .ipa or .zip for iOS)'
     required: true
   platform:
     description: 'App platform: either Android or iOS'
